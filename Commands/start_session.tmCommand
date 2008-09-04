@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby -wKU
+require ENV['TM_SUPPORT_PATH'] + '/lib/escape.rb'
+
+def project_name
+  File.basename(ENV['TM_PROJECT_DIRECTORY'])
+end
+
+def is_running(process)
+  all = `ps -U "$USER" -o ucomm`
+  all.to_a[1..-1].find { |cmd| process == cmd.strip }
+end
+
+def terminal_script(dir)
+  return &lt;&lt;-APPLESCRIPT
+    tell application "Terminal"
+      activate
+      do script "cd #{e_as(e_sh(dir))}; screen -c .screenrc -S #{project_name} -D -R #{project_name}"
+    end tell
+APPLESCRIPT
+end
+
+def iterm_script(dir)
+  return &lt;&lt;-APPLESCRIPT
+    tell application "iTerm"
+      activate
+      if exists the first terminal then
+        set myterm to the first terminal
+      else
+        set myterm to (make new terminal)
+      end if
+      tell myterm
+        activate current session
+        launch session "Default Session"
+        tell the last session
+          write text "cd #{e_as(e_sh(dir))}; clear; pwd"
+        end tell
+      end tell
+    end tell
+APPLESCRIPT
+end
+
+if dir = ENV['TM_PROJECT_DIRECTORY']
+  script = nil
+  if ENV['TM_TERMINAL'] =~ /^iterm$/i || is_running('iTerm')
+    script = iterm_script(dir)
+  else
+    script = terminal_script(dir)
+  end
+  open("|osascript", "w") { |io| io &lt;&lt; script }
+end
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^S</string>
+	<key>name</key>
+	<string>Start Session</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>uuid</key>
+	<string>C68EE723-D789-4A1E-81D3-3DF896CD43D0</string>
+</dict>
+</plist>
