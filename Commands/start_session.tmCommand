@@ -22,7 +22,7 @@ def screen_command
     screen_config = ''
   end
   
-  "screen #{screen_config} -S #{project_name} -D -R"
+  "screen #{screen_config} -S #{e_as(e_sh(project_name))}} -D -R"
 end
 
 def is_running(process)
