@@ -19,7 +19,7 @@ For example for a Ruby on Rails project you might create a .screenrc file in you
     # to the bash shell for that screen instead of immediately exiting that
     # screen. This is useful for "^c, up-arrow, enter" restarting of programs.
     screen -t server 1
-    stuff "script/server"
+    stuff "script/server\012"
     
     # Have autotest running in screen 2
     screen -t autotest 2
