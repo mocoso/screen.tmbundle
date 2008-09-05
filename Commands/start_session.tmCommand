@@ -35,6 +35,8 @@ def terminal_script(dir)
     tell application "Terminal"
       activate
       do script "cd #{e_as(e_sh(dir))}; #{screen_command}"
+      tell front window to set custom title to "#{project_name}"
+      tell front window to set title displays window size to false
     end tell
 APPLESCRIPT
 end
