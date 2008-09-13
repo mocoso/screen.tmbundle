@@ -33,9 +33,20 @@ For example for a Ruby on Rails project you might create a .screenrc file in you
     screen -t project_root 4
 
 
-## Usage
+## Commands
 
-Use this bundle's 'Start Session' command (ctrl-shift-s) to start (or reconnect to) your project's screen session.
+### Start Session (ctrl-a)
+
+Starts (or reconnects to) your project's screen session.
 
 If you have created a .screenrc file in your project directory then this will be used to initialize the new session.
 
+### Send to Screen (ctrl-alt-c)
+
+Copies selected text (or current line if no selection made) to your project's screen session. If you have multiple windows open in the session then it will paste to the currently selected window.
+
+
+## TODOs
+
+ - Send to Screen - Add support for using on files which are not in project
+ - Send to Screen - Add check that there is an active screen session to send the text to

@@ -4,6 +4,11 @@
 <dict>
 	<key>name</key>
 	<string>Screen</string>
+	<key>ordering</key>
+	<array>
+		<string>C68EE723-D789-4A1E-81D3-3DF896CD43D0</string>
+		<string>087EDF79-EE11-4C95-9C21-F426DFEC4F42</string>
+	</array>
 	<key>uuid</key>
 	<string>0F9DF9F8-C7DB-4EC3-8DBF-B7D636580A0B</string>
 </dict>

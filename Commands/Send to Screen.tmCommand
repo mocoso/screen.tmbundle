@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby -wKU
+
+require ENV['TM_SUPPORT_PATH'] + '/lib/escape.rb'
+
+def project_name
+  File.basename(ENV['TM_PROJECT_DIRECTORY'])
+end
+
+selected_text = ENV['TM_SELECTED_TEXT'] || ENV['TM_CURRENT_LINE']
+system "screen -S #{e_sh(project_name)} -X stuff #{e_sh(selected_text)}"
+
+</string>
+	<key>fallbackInput</key>
+	<string>line</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>keyEquivalent</key>
+	<string>^~c</string>
+	<key>name</key>
+	<string>Send to Screen</string>
+	<key>output</key>
+	<string>discard</string>
+	<key>uuid</key>
+	<string>087EDF79-EE11-4C95-9C21-F426DFEC4F42</string>
+</dict>
+</plist>
