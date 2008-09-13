@@ -17,12 +17,12 @@ end
 
 def screen_command
   if File.exists?(File.expand_path('.screenrc', ENV['TM_PROJECT_DIRECTORY']))
-    screen_config = '-c .screenrc'
+    screen_config = '-c .screenrc '
   else
     screen_config = ''
   end
   
-  "screen #{screen_config} -S #{e_as(e_sh(project_name))}} -D -R"
+  "screen #{screen_config}-S #{e_as(e_sh(project_name))} -D -R"
 end
 
 def is_running(process)
