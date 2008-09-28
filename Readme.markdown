@@ -7,7 +7,13 @@ Run this:
     cd ~/Library/Application\ Support/TextMate/Bundles
     git clone git://github.com/mocoso/screen.tmbundle.git Screen.tmbundle
     
-## Set up your screen configuration for a project
+## Set up
+
+### iTerm
+
+If you use iTerm (instead of Terminal), then set TM_TERMINAL to 'iterm' (in Textmate's Preferences)
+
+### Per project screen configuration
 
 Create a .screenrc file *in your project directory* if you want to specify a particular configuration for your project.
 
