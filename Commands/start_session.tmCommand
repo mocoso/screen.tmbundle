@@ -76,7 +76,7 @@ end
 	<key>input</key>
 	<string>none</string>
 	<key>keyEquivalent</key>
-	<string>^a</string>
+	<string>^@a</string>
 	<key>name</key>
 	<string>Start Session</string>
 	<key>output</key>

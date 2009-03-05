@@ -6,7 +6,7 @@ Run this:
 
     cd ~/Library/Application\ Support/TextMate/Bundles
     git clone git://github.com/mocoso/screen.tmbundle.git Screen.tmbundle
-    
+
 ## Set up
 
 ### iTerm
@@ -41,7 +41,7 @@ For example for a Ruby on Rails project you might create a .screenrc file in you
 
 ## Commands
 
-### Start Session (ctrl-a)
+### Start Session (ctrl-cmd-a)
 
 Starts (or reconnects to) your project's screen session.
 
