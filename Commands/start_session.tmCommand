@@ -21,7 +21,7 @@ def screen_command
   else
     screen_config = ''
   end
-  
+
   "screen #{screen_config}-S #{e_as(e_sh(project_name))} -D -R"
 end
 
@@ -34,9 +34,11 @@ def terminal_script(dir)
   return &lt;&lt;-APPLESCRIPT
     tell application "Terminal"
       activate
-      do script "cd #{e_as(e_sh(dir))}; #{screen_command}"
+      tell application "System Events"
+        tell process "Terminal" to keystroke "t" using command down
+        tell process "Terminal" to keystroke "cd #{e_as(e_sh(dir))}; #{screen_command}\n"
+      end
       tell front window to set custom title to "#{e_as(project_name)}"
-      tell front window to set title displays window size to false
     end tell
 APPLESCRIPT
 end
@@ -53,9 +55,9 @@ def iterm_script(dir)
       tell myterm
         activate current session
         launch session "Default Session"
-        
+
         tell the last session
-          set name to "#{e_as(project_name)}" 
+          set name to "#{e_as(project_name)}"
           write text "cd #{e_as(e_sh(dir))}; #{screen_command}"
         end tell
       end tell
