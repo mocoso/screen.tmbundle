@@ -32,11 +32,16 @@ end
 
 def terminal_script(dir)
   return &lt;&lt;-APPLESCRIPT
+    tell application "System Events"
+      set create_new_tab to (exists process "Terminal")
+    end tell
     tell application "Terminal"
       activate
       -- Hack to create new tab (no programatic interface to this?)
-      tell application "System Events"
-        tell process "Terminal" to keystroke "t" using command down
+      if create_new_tab
+        tell application "System Events"
+          tell process "Terminal" to keystroke "t" using command down
+        end
       end
       -- Assumes selected tab has not changed (we don't have a handle on the tab
       -- because of the way we created it so no other option)
