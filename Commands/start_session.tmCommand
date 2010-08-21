@@ -45,8 +45,12 @@ def terminal_script(dir)
       end
       -- Assumes selected tab has not changed (we don't have a handle on the tab
       -- because of the way we created it so no other option)
-      do script "cd #{e_as(e_sh(dir))}; #{screen_command}\n" in selected tab of front window
-      tell front window to set custom title to "#{e_as(project_name)}"
+      tell front window
+        -- set tab title, this only works in Snow Leopard (10.6) or later
+        do script "echo -n -e \\"\\\\033]0;#{e_as(project_name)}\\\\007\\"" in selected tab
+        -- open screen for project
+        do script "cd #{e_as(e_sh(dir))}; #{screen_command}" in selected tab
+      end tell
     end tell
 APPLESCRIPT
 end
