@@ -1,4 +1,4 @@
-The Screen Textmate Bundle
+# The Screen Textmate Bundle
 
 ## Installation
 
