@@ -1,5 +1,7 @@
 # The Screen Textmate Bundle
 
+**Warning:** _I no longer use Textmate or screen and so this is effectively abandonware_
+
 ## Installation
 
 Run this:
